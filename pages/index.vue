@@ -20,10 +20,8 @@ const onClick = () => {
   >
     <div class="text-center lg:block lg:text-left">
       <h1 class="text-5xl font-bold lg:text-7xl">
-        <span class="mr-2 font-app text-6xl underline lg:text-8xl">
-          Shipeo</span
-        >
-        your code in minutes, not a month
+        Beat the
+        <span class="mr-2 font-app text-6xl underline lg:text-8xl"> Ghame</span>
       </h1>
       <p class="my-8">{{ APP_DESCRIPTION }}</p>
       <div class="flex justify-center lg:justify-start">
@@ -47,10 +45,7 @@ const onClick = () => {
       </div>
     </div>
     <div class="flex w-full justify-center">
-      <img
-        src="~/assets/images/main-illustration.svg"
-        class="max-w-xl animate-wiggle"
-      />
+      <img src="~/assets/images/main-illustration.svg" class="max-w-xl" />
     </div>
   </section>
 </template>
