@@ -2,6 +2,29 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
+  runtimeConfig: {
+    proxyUrl: "http://localhost:8000",
+    turnstile: {
+      // TODO: Change this to your turnstile secret key
+      // Check for local test: https://developers.cloudflare.com/turnstile/troubleshooting/testing/
+      secretKey: "1x0000000000000000000000000000000AA", // Local test only
+    },
+    public: {
+      turnstile: {
+        // TODO: Change this to your turnstile site key
+        // Check for local test: https://developers.cloudflare.com/turnstile/troubleshooting/testing/
+        siteKey: "1x00000000000000000000AA", // Local test only
+      },
+    },
+  },
+  nitro: {
+    vercel: {
+      functions: {
+        maxDuration: 60,
+        memory: 1024,
+      },
+    },
+  },
   modules: [
     "@nuxtjs/tailwindcss",
     "shadcn-nuxt",
@@ -42,11 +65,5 @@ export default defineNuxtConfig({
   },
   colorMode: {
     classSuffix: "",
-  },
-  turnstile: {
-    // TODO: Change this to your turnstile site key
-    // Check for local test: https://developers.cloudflare.com/turnstile/troubleshooting/testing/
-    // siteKey: "3x00000000000000000000FF", // Local test only
-    siteKey: "0x4AAAAAAAy89W2disDsWMfC", // Production only
   },
 });
