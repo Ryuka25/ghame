@@ -1,5 +1,4 @@
 import { graphql } from "@octokit/graphql";
-import type { User } from "~/types";
 
 function getGraphqlWithAuth(githubToken: string) {
   console.log("token: ", githubToken);
@@ -12,7 +11,9 @@ function getGraphqlWithAuth(githubToken: string) {
 }
 
 interface GithubUserResponse {
-  user: User;
+  user: {
+    login: string;
+  };
 }
 
 function getGithubUser(
@@ -23,9 +24,7 @@ function getGithubUser(
     `
     query {
       user(login: "${username}") {
-        name,
         login,
-        avatarUrl,
       }
     }
   `,
