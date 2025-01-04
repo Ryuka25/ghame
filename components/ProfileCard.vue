@@ -10,11 +10,12 @@ const props = defineProps<{
   };
 }>();
 
+const storedUsername = useCookie("username");
 const user = useUser();
 
 const logout = () => {
   // remove user data
-  localStorage.removeItem("username");
+  storedUsername.value = null;
   user.value = null;
 
   navigateTo({ path: "/" });

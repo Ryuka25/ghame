@@ -1,21 +1,17 @@
 <script lang="ts" setup>
 const user = useUser();
-const router = useRouter();
+
+definePageMeta({
+  middleware: "auth",
+});
 
 onMounted(() => {
-  const storedUsername = localStorage.getItem("username");
-  if (!storedUsername) {
-    navigateTo({
-      path: "/",
-      query: { next: router.currentRoute.value.path },
-      replace: true,
-    });
-  }
+  const storedUsername = useCookie("username");
 
   if (!user.value) {
     $fetch("/api/fetch-user/", {
       query: {
-        username: storedUsername,
+        username: storedUsername.value,
       },
     }).then((userData) => {
       user.value = userData;

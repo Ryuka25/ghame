@@ -4,6 +4,10 @@ import { APP_DESCRIPTION, APP_GITHUB_LINK } from "~/lib/app";
 
 import { useToast } from "@/components/ui/toast/use-toast";
 
+definePageMeta({
+  middleware: "redirect-if-logged-in",
+});
+
 function polishUsername(username: string) {
   return username.trim();
 }
@@ -11,6 +15,7 @@ function polishUsername(username: string) {
 const router = useRouter();
 const { toast } = useToast();
 
+const storedUsername = useCookie("username");
 const username = useState("username", () => "");
 const isLoading = ref(false);
 
@@ -37,14 +42,14 @@ const onSubmit = async () => {
     });
 
     // save the user to the store
-    localStorage.setItem("username", res.login);
+    storedUsername.value = res.login;
     username.value = "";
 
     // navigate to the next page or dashboard
     if (router.currentRoute.value.query.next) {
       navigateTo({ path: router.currentRoute.value.query.next as string });
     } else {
-      navigateTo({ path: "/app" });
+      navigateTo({ path: "/app/" });
     }
   } catch (error) {
     console.log(error);
@@ -58,16 +63,6 @@ const onSubmit = async () => {
     isLoading.value = false;
   }
 };
-
-onMounted(() => {
-  const storedUsername = localStorage.getItem("username");
-  if (storedUsername) {
-    navigateTo({
-      path: "/app/",
-      replace: true,
-    });
-  }
-});
 </script>
 
 <template>
