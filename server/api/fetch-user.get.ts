@@ -1,15 +1,6 @@
-import { graphql } from "@octokit/graphql";
+import type { graphql } from "@octokit/graphql";
+import { getGraphqlWithAuth } from "~/lib/utils";
 import type { User } from "~/types";
-
-function getGraphqlWithAuth(githubToken: string) {
-  console.log("token: ", githubToken);
-
-  return graphql.defaults({
-    headers: {
-      authorization: `token ${githubToken}`,
-    },
-  });
-}
 
 interface GithubUserResponse {
   user: User;
