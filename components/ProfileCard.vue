@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { LogOut } from "lucide-vue-next";
+
 const props = defineProps<{
   userProfile: {
     name: string;
@@ -7,6 +9,16 @@ const props = defineProps<{
     location: string;
   };
 }>();
+
+const user = useUser();
+
+const logout = () => {
+  // remove user data
+  localStorage.removeItem("username");
+  user.value = null;
+
+  navigateTo({ path: "/" });
+};
 </script>
 
 <template>
@@ -30,5 +42,11 @@ const props = defineProps<{
         </div>
       </div>
     </CardContent>
+    <CardFooter>
+      <Button class="w-full" @click="logout">
+        <LogOut />
+        Logout
+      </Button>
+    </CardFooter>
   </Card>
 </template>
