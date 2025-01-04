@@ -25,3 +25,4 @@ logs
 
 .vercel
 .vscode
+pages/labs.vue
