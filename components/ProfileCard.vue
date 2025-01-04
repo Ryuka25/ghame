@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
-  user: {
+  userProfile: {
     name: string;
     login: string;
     avatarUrl: string;
@@ -14,15 +14,19 @@ const props = defineProps<{
     <CardContent>
       <div class="relative flex flex-col items-center gap-4">
         <Avatar class="absolute -top-16 size-32">
-          <AvatarImage :src="user.avatarUrl" :alt="user.login" />
+          <AvatarImage :src="userProfile.avatarUrl" :alt="userProfile.login" />
           <AvatarFallback>GH</AvatarFallback>
         </Avatar>
         <div class="mt-20 grid gap-1 text-center">
           <p class="text-md font-medium leading-none">
-            <span v-if="user.name">{{ user.name }} ({{ user.login }})</span>
-            <span v-else>{{ user.login }}</span>
+            <span v-if="userProfile.name"
+              >{{ userProfile.name }} ({{ userProfile.login }})</span
+            >
+            <span v-else>{{ userProfile.login }}</span>
           </p>
-          <p class="text-sm text-muted-foreground">{{ user.location }}</p>
+          <p class="text-sm text-muted-foreground">
+            {{ userProfile.location }}
+          </p>
         </div>
       </div>
     </CardContent>
