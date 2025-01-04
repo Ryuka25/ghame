@@ -58,6 +58,16 @@ const onSubmit = async () => {
     isLoading.value = false;
   }
 };
+
+onMounted(() => {
+  const storedUsername = localStorage.getItem("username");
+  if (storedUsername) {
+    navigateTo({
+      path: "/app/",
+      replace: true,
+    });
+  }
+});
 </script>
 
 <template>
