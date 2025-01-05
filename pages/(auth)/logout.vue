@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const storedUsername = useCookie("username");
 const user = useUser();
 

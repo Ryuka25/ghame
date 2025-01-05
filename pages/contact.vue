@@ -25,13 +25,15 @@ import { Send } from "lucide-vue-next";
               class="flex items-center gap-2 font-bold underline"
               to="mailto:contact.lovanirina@gmail.com"
             >
-              <Send class="h-4 w-4" /> Shoot us an email
+              <Send class="h-4 w-4" />
+              Shoot us an email
             </NuxtLink>
             <a
               class="flex items-center gap-2 font-bold underline"
               href="https://x.com/lovanirina_r"
             >
-              <Icon name="simple-icons:x" class="h-4 w-4" /> Message us on X
+              <Icon class="h-4 w-4" name="simple-icons:x" />
+              Message us on X
             </a>
           </div>
         </div>

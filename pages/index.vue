@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Rocket, Loader2 } from "lucide-vue-next";
+import { Loader2, Rocket } from "lucide-vue-next";
 import { APP_DESCRIPTION, APP_GITHUB_LINK } from "~/lib/app";
 
 import { useToast } from "@/components/ui/toast/use-toast";
@@ -78,9 +78,9 @@ const onSubmit = async () => {
         <p class="my-8">{{ APP_DESCRIPTION }}</p>
         <Input
           v-model="username"
-          type="text"
           placeholder="Type your github username here..."
           required
+          type="text"
           @change="username = polishUsername($event.target.value)"
         />
         <div class="flex justify-center lg:justify-start">
@@ -94,12 +94,12 @@ const onSubmit = async () => {
           </Button>
           <Button
             v-if="APP_GITHUB_LINK"
+            as-child
             class="my-4 ml-2 text-right"
             variant="outline"
-            as-child
           >
             <NuxtLink :to="APP_GITHUB_LINK" target="_blank">
-              <Icon name="simple-icons:github" class="mr-1 h-4 w-4" />
+              <Icon class="mr-1 h-4 w-4" name="simple-icons:github" />
               Star on github
             </NuxtLink>
           </Button>
@@ -109,8 +109,8 @@ const onSubmit = async () => {
     <div class="flex w-full justify-center">
       <img
         alt="Ghame illustration"
-        src="~/assets/images/main-illustration.svg"
         class="max-w-xl"
+        src="~/assets/images/main-illustration.svg"
       />
     </div>
   </section>
