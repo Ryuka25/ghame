@@ -12,7 +12,7 @@ const navigation = [
 
 onMounted(() => {
   if (storedUsername.value && !user.value) {
-    $fetch("/api/fetch-user/", {
+    $fetch("/api/whoami", {
       query: {
         username: storedUsername.value,
       },
