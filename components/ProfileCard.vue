@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps<{
+const { userProfile } = defineProps<{
   userProfile: {
     name: string;
     login: string;
