@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { Loader2, Rocket } from "lucide-vue-next";
 import { APP_DESCRIPTION, APP_GITHUB_LINK } from "~/lib/app";
+import { vFocus } from "~/lib/utils";
 
 import { useToast } from "@/components/ui/toast/use-toast";
 
@@ -78,6 +79,7 @@ const onSubmit = async () => {
         <p class="my-8">{{ APP_DESCRIPTION }}</p>
         <Input
           v-model="username"
+          v-focus
           placeholder="Type your github username here..."
           required
           type="text"
