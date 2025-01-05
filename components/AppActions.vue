@@ -6,11 +6,7 @@ const user = useUser();
 
 onMounted(() => {
   if (storedUsername.value && !user.value) {
-    $fetch("/api/whoami", {
-      query: {
-        username: storedUsername.value,
-      },
-    }).then((userData) => {
+    $fetch("/api/whoami").then((userData) => {
       user.value = userData;
     });
   }
