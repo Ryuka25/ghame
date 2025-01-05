@@ -33,15 +33,6 @@ const { user } = defineProps<{
         </div>
       </DropdownMenuLabel>
       <DropdownMenuSeparator />
-      <DropdownMenuGroup>
-        <DropdownMenuItem as-child>
-          <NuxtLink to="/contact/">
-            <Phone class="mr-2 h-4 w-4" />
-            <span>Contact</span>
-          </NuxtLink>
-        </DropdownMenuItem>
-      </DropdownMenuGroup>
-      <DropdownMenuSeparator />
       <DropdownMenuItem as-child>
         <NuxtLink to="/logout/">
           <LogOut class="mr-2 h-4 w-4" />
