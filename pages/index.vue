@@ -72,7 +72,7 @@ const onSubmit = async () => {
     <form class="text-center lg:block lg:text-left" @submit.prevent="onSubmit">
       <h1 class="text-5xl font-bold lg:text-7xl">
         Beat the
-        <span class="mr-2 font-app text-6xl underline lg:text-8xl"> Ghame</span>
+        <span class="mr-2 font-app text-6xl underline lg:text-8xl">Ghame</span>
       </h1>
       <div class="max-w-md">
         <p class="my-8">{{ APP_DESCRIPTION }}</p>
@@ -107,7 +107,11 @@ const onSubmit = async () => {
       </div>
     </form>
     <div class="flex w-full justify-center">
-      <img src="~/assets/images/main-illustration.svg" class="max-w-xl" />
+      <img
+        alt="Ghame illustration"
+        src="~/assets/images/main-illustration.svg"
+        class="max-w-xl"
+      />
     </div>
   </section>
 </template>
