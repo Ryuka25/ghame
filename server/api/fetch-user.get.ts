@@ -1,5 +1,6 @@
 import type { graphql } from "@octokit/graphql";
 import { getGraphqlWithAuth } from "~/lib/utils";
+import { throwUnauthorized } from "~/server/utils/errors";
 import type { User } from "~/types";
 
 interface GithubUserResponse {
@@ -25,8 +26,8 @@ function getGithubUser(
 }
 
 export default defineEventHandler(async (event) => {
-  const query = getQuery(event);
-  const username = (query?.username as string) || "";
+  const username = event.context.user?.username;
+  if (!username) throwUnauthorized();
 
   const config = useRuntimeConfig();
   const githubToken = config.githubToken;
