@@ -85,19 +85,21 @@ const onSubmit = async () => {
           type="text"
           @change="username = polishUsername($event.target.value)"
         />
-        <div class="flex justify-center lg:justify-start">
-          <Button v-if="isLoading" class="my-4 text-right" disabled>
+        <div
+          class="mt-4 flex flex-col justify-center gap-2 lg:flex-row lg:justify-start"
+        >
+          <Button v-if="isLoading" class="w-full text-right lg:w-min" disabled>
             <Loader2 class="mr-2 h-4 w-4 animate-spin" />
             Preparing the board
           </Button>
-          <Button v-else class="my-4 text-right">
+          <Button v-else class="w-full text-right lg:w-min">
             <Rocket class="mr-1 h-4 w-4" />
             Raise the challenge
           </Button>
           <Button
             v-if="APP_GITHUB_LINK"
             as-child
-            class="my-4 ml-2 text-right"
+            class="w-full text-right lg:w-min"
             variant="outline"
           >
             <NuxtLink :to="APP_GITHUB_LINK" target="_blank">
