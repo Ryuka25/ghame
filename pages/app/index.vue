@@ -42,9 +42,12 @@ onMounted(() => {
       <Loader2 class="animate-spin" />
     </div>
 
-    <div v-else class="flex flex-col items-center gap-8">
-      <ProfileCard :user-profile="user" class="w-full max-w-xs" />
-      <div class="flex w-full flex-col gap-4">
+    <div v-else class="flex flex-col gap-8 lg:flex-row">
+      <ProfileCard
+        :user-profile="user"
+        class="w-full max-w-xs self-center lg:self-start"
+      />
+      <div class="grid w-full gap-4 md:grid-cols-2">
         <RankCard
           :users="topUsersByPublicContributions"
           rank-key="publicContributions"
@@ -57,6 +60,7 @@ onMounted(() => {
         />
         <RankCard
           :users="topUsersByFollowers"
+          class="md:col-span-2"
           rank-key="followers"
           title="Followers"
         />
