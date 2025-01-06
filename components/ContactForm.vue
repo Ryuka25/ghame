@@ -79,20 +79,20 @@ watch(token, (value) => {
 
 <template>
   <form
-    class="w-full lg:w-1/2"
     :validation-schema="contactFormSchema"
+    class="w-full lg:w-1/2"
     @submit="submitForm"
   >
     <div class="grid gap-4 lg:grid-cols-2">
-      <FormField v-slot="{ componentField }" name="name" class="grid gap-2">
+      <FormField v-slot="{ componentField }" class="grid gap-2" name="name">
         <FormItem>
           <FormLabel>Name</FormLabel>
           <FormControl>
             <Input
               id="password"
-              type="text"
-              placeholder="Full name"
               :="componentField"
+              placeholder="Full name"
+              type="text"
             />
           </FormControl>
           <FormMessage />
@@ -104,9 +104,9 @@ watch(token, (value) => {
           <FormControl>
             <Input
               id="password"
-              type="text"
-              placeholder="you@company.com"
               :="componentField"
+              placeholder="you@company.com"
+              type="text"
             />
           </FormControl>
           <FormMessage />
@@ -118,9 +118,9 @@ watch(token, (value) => {
           <FormControl>
             <Textarea
               id="message"
+              :="componentField"
               class="min-h-40"
               placeholder="Leave us a message..."
-              :="componentField"
             />
           </FormControl>
           <FormMessage />
@@ -130,7 +130,7 @@ watch(token, (value) => {
         <NuxtTurnstile v-model="token" />
       </div>
     </div>
-    <Button type="submit" class="mt-8 w-full" :disabled="isLoading">
+    <Button :disabled="isLoading" class="mt-8 w-full" type="submit">
       Send message
     </Button>
   </form>
