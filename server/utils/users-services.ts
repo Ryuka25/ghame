@@ -83,7 +83,7 @@ export function getTopUsersByTotalContributions(
 export function getExtraUsersFromTopUser(
   users: RankedUser[],
   login: string,
-): number {
+): RankedUser[] {
   const indexOfUser = users.findIndex((user) => user.login === login);
 
   const indexOfLastTop10User = 9;
