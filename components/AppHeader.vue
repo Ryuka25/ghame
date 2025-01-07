@@ -69,7 +69,7 @@ const closeMenu = () => {
       <!-- /Mobile navigation -->
 
       <!--      App logo -->
-      <NuxtLink to="/">
+      <NuxtLink class="flex-1" to="/">
         <AppName />
       </NuxtLink>
       <!--      /App logo -->
