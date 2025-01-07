@@ -9,6 +9,7 @@ export interface User {
 }
 
 export interface RankedUser extends User {
+  rank: number;
   company: string;
   twitterUsername: string;
   followers: number;
