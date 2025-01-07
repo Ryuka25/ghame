@@ -1,18 +1,18 @@
 <script lang="ts" setup>
 import { Loader2 } from "lucide-vue-next";
-import type { RankUser } from "~/types";
+import type { RankedUser } from "~/types";
 
 const user = useUser();
 
-const topUsersByFollowers = useState<RankUser[]>(
+const topUsersByFollowers = useState<RankedUser[]>(
   "topUsersByFollowers",
   () => [],
 );
-const topUsersByPublicContributions = useState<RankUser[]>(
+const topUsersByPublicContributions = useState<RankedUser[]>(
   "topUsersByPublicContributions",
   () => [],
 );
-const topUsersByTotalContributions = useState<RankUser[]>(
+const topUsersByTotalContributions = useState<RankedUser[]>(
   "topUsersByTotalContributions",
   () => [],
 );

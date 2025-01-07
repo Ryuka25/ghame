@@ -8,7 +8,7 @@ export interface User {
   location: string;
 }
 
-export interface RankUser extends User {
+export interface RankedUser extends User {
   company: string;
   twitterUsername: string;
   followers: number;
