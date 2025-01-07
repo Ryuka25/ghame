@@ -1,28 +1,34 @@
 <script lang="ts" setup>
 import type { RankedUser } from "~/types";
-import { Globe, GlobeLock, UsersRound } from "lucide-vue-next";
+import { ExternalLink } from "lucide-vue-next";
 
 const {
   title,
   users,
   rankKey,
+  link = "",
   extraUsers = [],
 } = defineProps<{
   title: string;
   users: RankedUser[];
   rankKey: keyof RankedUser;
+  link?: string;
   extraUsers?: RankedUser[];
 }>();
+
+const router = useRouter();
 </script>
 
 <template>
   <Card class="w-full">
     <CardHeader>
-      <CardTitle class="flex items-center gap-2 text-lg text-primary">
-        <Globe v-if="rankKey == 'publicContributions'" />
-        <GlobeLock v-if="rankKey == 'totalContributions'" />
-        <UsersRound v-if="rankKey == 'followers'" />
-        <span>{{ title }}</span>
+      <CardTitle
+        class="flex items-center justify-between gap-2 text-lg text-primary"
+      >
+        {{ title }}
+        <NuxtLink v-if="link" :to="link">
+          <ExternalLink class="size-5" />
+        </NuxtLink>
       </CardTitle>
     </CardHeader>
     <CardContent class="grid gap-2 text-xs">
