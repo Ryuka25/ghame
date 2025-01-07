@@ -2,7 +2,7 @@
 import type { RankedUser, User } from "~/types";
 import { Globe, GlobeLock, UsersRound } from "lucide-vue-next";
 
-const { user, rank, rankKey } = defineProps<{
+const { user, rankKey } = defineProps<{
   user: RankedUser;
   rankKey: keyof RankedUser;
 }>();
