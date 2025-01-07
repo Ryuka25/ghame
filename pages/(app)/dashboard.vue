@@ -60,12 +60,14 @@ onMounted(() => {
         <RankCard
           :extra-users="extraUsersByPublicContributions"
           :users="top10UsersByPublicContributions"
+          link="/public-contributions"
           rank-key="publicContributions"
           title="Public contributions"
         />
         <RankCard
           :extra-users="extraUsersByTotalContributions"
           :users="top10UsersByTotalContributions"
+          link="/total-contributions"
           rank-key="totalContributions"
           title="Total contributions"
         />
@@ -73,6 +75,7 @@ onMounted(() => {
           :extra-users="extraUsersByFollowers"
           :users="top10UsersByFollowers"
           class="md:col-span-2"
+          link="/followers"
           rank-key="followers"
           title="Followers"
         />
