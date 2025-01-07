@@ -1,19 +1,45 @@
-import type { RankedUser } from "~/types";
+import type { RankedUser, User } from "~/types";
 
 const TOP_MADAGASCAR_GITHUB_USERS =
   "https://raw.githubusercontent.com/tsirysndr/top-github-users/refs/heads/main/cache/madagascar.json";
 
 /**
- * Normalizes the user data by adding a totalContributions field.
+ * Normalizes the user data by adding an initial field.
  *
- * @param {RankedUser[]} users - The array of users to normalize.
- * @returns {RankedUser[]} The normalized array of users.
+ * @param {User} user - The user to normalize.
+ * @returns {User} The normalized user.
  */
-export function normalizeUsers(users: RankedUser[]): RankedUser[] {
-  return users.map((user) => ({
+export function normaliseUser<T extends User>(user: T): T {
+  let initial = user.login.slice(0, 2);
+
+  if (user.name) {
+    const splitedName = user.name.split(" ");
+    if (splitedName.length > 1) {
+      initial = splitedName
+        .slice(0, 2)
+        .map((name) => name[0])
+        .join("");
+    }
+    initial = user.name.slice(0, 2);
+  }
+
+  return {
     ...user,
+    initial: initial.toUpperCase(),
+  };
+}
+
+/**
+ * Normalizes the user data by adding an initial field.
+ *
+ * @param {User} user - The user to normalize.
+ * @returns {User} The normalized user.
+ */
+export function normaliseRankedUser(user: RankedUser): RankedUser {
+  return {
+    ...normaliseUser(user),
     totalContributions: user.publicContributions + user.privateContributions,
-  }));
+  };
 }
 
 /**
@@ -25,7 +51,7 @@ export async function fetchTopUsers(): Promise<RankedUser[]> {
   const usersJson = await $fetch<string>(TOP_MADAGASCAR_GITHUB_USERS);
   const users: RankedUser[] = JSON.parse(usersJson);
 
-  return normalizeUsers(users);
+  return users.map((user) => normaliseRankedUser(user));
 }
 
 /**
