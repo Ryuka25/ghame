@@ -28,7 +28,7 @@ onMounted(() => {
     });
   }
 
-  $fetch("/api/top-users").then((data) => {
+  $fetch("/api/top-10-users").then((data) => {
     topUsersByFollowers.value = data.followers;
     topUsersByTotalContributions.value = data.total_contributions;
     topUsersByPublicContributions.value = data.public_contributions;
