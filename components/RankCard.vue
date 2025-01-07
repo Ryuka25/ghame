@@ -2,11 +2,16 @@
 import type { RankedUser } from "~/types";
 import { Globe, GlobeLock, UsersRound } from "lucide-vue-next";
 
-const { title, users, rankKey, extraUsers } = defineProps<{
+const {
+  title,
+  users,
+  rankKey,
+  extraUsers = [],
+} = defineProps<{
   title: string;
   users: RankedUser[];
   rankKey: keyof RankedUser;
-  extraUsers: RankedUser[];
+  extraUsers?: RankedUser[];
 }>();
 </script>
 
