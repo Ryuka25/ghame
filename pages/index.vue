@@ -50,7 +50,7 @@ const onSubmit = async () => {
     if (router.currentRoute.value.query.next) {
       navigateTo({ path: router.currentRoute.value.query.next as string });
     } else {
-      navigateTo({ path: "/app/" });
+      navigateTo({ path: "/dashboard" });
     }
   } catch (error) {
     console.log(error);

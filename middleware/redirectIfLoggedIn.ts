@@ -1,10 +1,10 @@
 export default defineNuxtRouteMiddleware(() => {
   const storedUsername = useCookie("username");
 
-  // if user is logged in redirect to /app
+  // if user is logged in redirect to /dashboard
   if (storedUsername.value) {
     return navigateTo({
-      path: "/app/",
+      path: "/dashboard",
       replace: true,
     });
   }
