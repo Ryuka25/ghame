@@ -29,7 +29,7 @@ onMounted(() => {
     <RankNumber :number="user.rank" />
     <Avatar :class="[isActive ? 'border-2 border-primary' : '']" class="size-8">
       <AvatarImage :src="user.avatarUrl" />
-      <AvatarFallback>{{ user.login }}</AvatarFallback>
+      <AvatarFallback>{{ user.initial }}</AvatarFallback>
     </Avatar>
     <div class="flex flex-1 flex-col justify-center md:ml-4">
       <div

@@ -53,7 +53,7 @@ onMounted(() => {
     <div class="flex flex-col gap-8 lg:flex-row">
       <ProfileCard
         v-if="user"
-        :user-profile="user"
+        :user="user"
         class="w-full max-w-xs self-center lg:self-start"
       />
       <div class="grid w-full gap-4 md:grid-cols-2">

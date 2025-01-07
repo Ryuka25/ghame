@@ -1,5 +1,5 @@
-<script setup lang="ts">
-import { LogOut, Phone } from "lucide-vue-next";
+<script lang="ts" setup>
+import { LogOut } from "lucide-vue-next";
 import type { User } from "~/types";
 
 const { user } = defineProps<{
@@ -10,14 +10,14 @@ const { user } = defineProps<{
 <template>
   <DropdownMenu>
     <DropdownMenuTrigger as-child>
-      <Button variant="ghost" class="relative h-8 w-8 rounded-full">
+      <Button class="relative h-8 w-8 rounded-full" variant="ghost">
         <Avatar class="h-8 w-8">
           <AvatarImage :alt="user.login" :src="user.avatarUrl" />
-          <AvatarFallback>AZ</AvatarFallback>
+          <AvatarFallback>{{ user.initial }}</AvatarFallback>
         </Avatar>
       </Button>
     </DropdownMenuTrigger>
-    <DropdownMenuContent class="w-56" align="end">
+    <DropdownMenuContent align="end" class="w-56">
       <DropdownMenuLabel class="flex font-normal">
         <div class="flex flex-col space-y-1">
           <p class="text-sm font-medium leading-none">{{ user.login }}</p>
