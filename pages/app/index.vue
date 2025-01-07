@@ -16,6 +16,18 @@ const topUsersByTotalContributions = useState<RankedUser[]>(
   "topUsersByTotalContributions",
   () => [],
 );
+const extraUsersByFollowers = useState<RankedUser[]>(
+  "extraUsersByFollowers",
+  () => [],
+);
+const extraUsersByPublicContributions = useState<RankedUser[]>(
+  "extraUsersByPublicContributions",
+  () => [],
+);
+const extraUsersByTotalContributions = useState<RankedUser[]>(
+  "extraUsersByTotalContributions",
+  () => [],
+);
 
 definePageMeta({
   middleware: "auth",
@@ -29,9 +41,16 @@ onMounted(() => {
   }
 
   $fetch("/api/top-10-users").then((data) => {
+    // Assign top users
     topUsersByFollowers.value = data.followers;
     topUsersByTotalContributions.value = data.total_contributions;
     topUsersByPublicContributions.value = data.public_contributions;
+    // Assign extra users
+    extraUsersByFollowers.value = data.extra_users_by_followers;
+    extraUsersByTotalContributions.value =
+      data.extra_users_by_total_contributions;
+    extraUsersByPublicContributions.value =
+      data.extra_users_by_public_contributions;
   });
 });
 </script>
@@ -49,16 +68,19 @@ onMounted(() => {
       />
       <div class="grid w-full gap-4 md:grid-cols-2">
         <RankCard
+          :extra-users="extraUsersByPublicContributions"
           :users="topUsersByPublicContributions"
           rank-key="publicContributions"
           title="Public contributions"
         />
         <RankCard
+          :extra-users="extraUsersByTotalContributions"
           :users="topUsersByTotalContributions"
           rank-key="totalContributions"
           title="Total contributions"
         />
         <RankCard
+          :extra-users="extraUsersByFollowers"
           :users="topUsersByFollowers"
           class="md:col-span-2"
           rank-key="followers"

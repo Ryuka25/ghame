@@ -4,7 +4,6 @@ import { Globe, GlobeLock, UsersRound } from "lucide-vue-next";
 
 const { user, rank, rankKey } = defineProps<{
   user: RankedUser;
-  rank: number;
   rankKey: keyof RankedUser;
 }>();
 
@@ -27,7 +26,7 @@ onMounted(() => {
     :class="[isActive ? 'text-primary' : '']"
     class="flex items-center gap-2 py-1"
   >
-    <RankNumber :number="rank" />
+    <RankNumber :number="user.rank" />
     <Avatar :class="[isActive ? 'border-2 border-primary' : '']" class="size-8">
       <AvatarImage :src="user.avatarUrl" />
       <AvatarFallback>{{ user.login }}</AvatarFallback>

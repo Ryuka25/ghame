@@ -2,10 +2,11 @@
 import type { RankedUser } from "~/types";
 import { Globe, GlobeLock, UsersRound } from "lucide-vue-next";
 
-const { title, users, rankKey } = defineProps<{
+const { title, users, rankKey, extraUsers } = defineProps<{
   title: string;
   users: RankedUser[];
   rankKey: keyof RankedUser;
+  extraUsers: RankedUser[];
 }>();
 </script>
 
@@ -21,12 +22,20 @@ const { title, users, rankKey } = defineProps<{
     </CardHeader>
     <CardContent class="grid gap-2 text-xs">
       <RankCardItem
-        v-for="(user, index) in users"
+        v-for="user in users"
         :key="user.login"
-        :rank="index + 1"
         :rank-key="rankKey"
         :user="user"
       />
+      <template v-if="extraUsers.length">
+        <Separator />
+        <RankCardItem
+          v-for="user in extraUsers"
+          :key="user.login"
+          :rank-key="rankKey"
+          :user="user"
+        />
+      </template>
     </CardContent>
   </Card>
 </template>
