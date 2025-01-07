@@ -35,7 +35,7 @@ export default defineEventHandler(async (event) => {
 
   try {
     const { user } = await getGithubUser(graphlWithAuth, username);
-    return user;
+    return normaliseUser(user);
   } catch (error) {
     console.error(error);
 
