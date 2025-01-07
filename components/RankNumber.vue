@@ -16,7 +16,7 @@ const props = defineProps<{
   <div
     :class="
       cn(
-        'text-centers flex aspect-square size-6 items-center justify-center rounded-full text-xs font-semibold',
+        'text-centers flex aspect-square size-6 items-center justify-center rounded-full text-xs font-semibold text-primary',
         props.number === 1 ? top1 : '',
         props.number === 2 ? top2 : '',
         props.number === 3 ? top3 : '',
