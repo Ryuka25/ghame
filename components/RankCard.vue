@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { RankUser } from "~/types";
+import { Globe, GlobeLock, UsersRound } from "lucide-vue-next";
 
 const { title, users, rankKey } = defineProps<{
   title: string;
@@ -11,7 +12,12 @@ const { title, users, rankKey } = defineProps<{
 <template>
   <Card class="w-full">
     <CardHeader>
-      <CardTitle class="text-lg">{{ title }}</CardTitle>
+      <CardTitle class="flex items-center gap-2 text-lg text-primary">
+        <Globe v-if="rankKey == 'publicContributions'" />
+        <GlobeLock v-if="rankKey == 'totalContributions'" />
+        <UsersRound v-if="rankKey == 'followers'" />
+        <span>{{ title }}</span>
+      </CardTitle>
     </CardHeader>
     <CardContent class="text-xs">
       <ul class="grid gap-2">
