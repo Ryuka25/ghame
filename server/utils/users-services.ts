@@ -53,16 +53,6 @@ export function getTopUsersByFollowers(users: RankedUser[]): RankedUser[] {
 }
 
 /**
- * Gets the top 10 users sorted by their number of followers.
- *
- * @param {RankedUser[]} users - The array of users to sort and rank.
- * @returns {RankedUser[]} The top 10 ranked users sorted by followers.
- */
-export function getTop10UsersByFollowers(users: RankedUser[]): RankedUser[] {
-  return getTopUsersByFollowers(users).slice(0, 10);
-}
-
-/**
  * Gets the top users sorted by their number of public contributions.
  *
  * @param {RankedUser[]} users - The array of users to sort and rank.
@@ -73,18 +63,6 @@ export function getTopUsersByPublicContributions(
 ): RankedUser[] {
   users.sort((a, b) => b.publicContributions - a.publicContributions);
   return rankUsers(users);
-}
-
-/**
- * Gets the top 10 users sorted by their number of public contributions.
- *
- * @param {RankedUser[]} users - The array of users to sort and rank.
- * @returns {RankedUser[]} The top 10 ranked users sorted by public contributions.
- */
-export function getTop10UsersByPublicContributions(
-  users: RankedUser[],
-): RankedUser[] {
-  return getTopUsersByPublicContributions(users).slice(0, 10);
 }
 
 /**
@@ -102,14 +80,18 @@ export function getTopUsersByTotalContributions(
   return rankUsers(users);
 }
 
-/**
- * Gets the top 10 users sorted by their total contributions.
- *
- * @param {RankedUser[]} users - The array of users to sort and rank.
- * @returns {RankedUser[]} The top 10 ranked users sorted by total contributions.
- */
-export function getTop10UsersByTotalContributions(
+export function getExtraUsersFromTopUser(
   users: RankedUser[],
-): RankedUser[] {
-  return getTopUsersByTotalContributions(users).slice(0, 10);
+  login: string,
+): number {
+  const indexOfUser = users.findIndex((user) => user.login === login);
+
+  const indexOfLastTop10User = 9;
+  const numberOfExtraUsers = 2;
+
+  if (indexOfUser === -1) return [];
+
+  if (indexOfUser <= indexOfLastTop10User) return [];
+
+  return users.slice(indexOfUser - numberOfExtraUsers, indexOfUser + 1);
 }
