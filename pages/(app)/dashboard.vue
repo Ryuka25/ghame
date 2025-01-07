@@ -1,18 +1,22 @@
 <script lang="ts" setup>
 import type { RankedUser } from "~/types";
 
+definePageMeta({
+  middleware: "auth",
+});
+
 const user = useUser();
 
-const topUsersByFollowers = useState<RankedUser[]>(
-  "topUsersByFollowers",
+const top10UsersByFollowers = useState<RankedUser[]>(
+  "top10UsersByFollowers",
   () => [],
 );
-const topUsersByPublicContributions = useState<RankedUser[]>(
-  "topUsersByPublicContributions",
+const top10UsersByPublicContributions = useState<RankedUser[]>(
+  "top10UsersByPublicContributions",
   () => [],
 );
-const topUsersByTotalContributions = useState<RankedUser[]>(
-  "topUsersByTotalContributions",
+const top10UsersByTotalContributions = useState<RankedUser[]>(
+  "top10UsersByTotalContributions",
   () => [],
 );
 const extraUsersByFollowers = useState<RankedUser[]>(
@@ -31,9 +35,9 @@ const extraUsersByTotalContributions = useState<RankedUser[]>(
 onMounted(() => {
   $fetch("/api/top-10-users").then((data) => {
     // Assign top users
-    topUsersByFollowers.value = data.followers;
-    topUsersByTotalContributions.value = data.total_contributions;
-    topUsersByPublicContributions.value = data.public_contributions;
+    top10UsersByFollowers.value = data.followers;
+    top10UsersByTotalContributions.value = data.total_contributions;
+    top10UsersByPublicContributions.value = data.public_contributions;
     // Assign extra users
     extraUsersByFollowers.value = data.extra_users_by_followers;
     extraUsersByTotalContributions.value =
@@ -55,19 +59,19 @@ onMounted(() => {
       <div class="grid w-full gap-4 md:grid-cols-2">
         <RankCard
           :extra-users="extraUsersByPublicContributions"
-          :users="topUsersByPublicContributions"
+          :users="top10UsersByPublicContributions"
           rank-key="publicContributions"
           title="Public contributions"
         />
         <RankCard
           :extra-users="extraUsersByTotalContributions"
-          :users="topUsersByTotalContributions"
+          :users="top10UsersByTotalContributions"
           rank-key="totalContributions"
           title="Total contributions"
         />
         <RankCard
           :extra-users="extraUsersByFollowers"
-          :users="topUsersByFollowers"
+          :users="top10UsersByFollowers"
           class="md:col-span-2"
           rank-key="followers"
           title="Followers"

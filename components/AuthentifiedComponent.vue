@@ -3,10 +3,6 @@ import { Loader2 } from "lucide-vue-next";
 
 const user = useUser();
 
-definePageMeta({
-  middleware: "auth",
-});
-
 onMounted(() => {
   if (!user.value) {
     $fetch("/api/whoami").then((userData) => {
