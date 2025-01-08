@@ -103,16 +103,19 @@ const closeMenu = () => {
             :key="link.to"
             class="w-full"
           >
-            <NavigationMenuLink
-              :class="[
-                navigationMenuTriggerStyle(),
-                'w-full gap-2',
-                router.currentRoute.value.path == link.to ? 'text-primary' : '',
-              ]"
-              :href="link.to"
-            >
-              {{ link.label }}
-            </NavigationMenuLink>
+            <NuxtLink :to="link.to" link.to>
+              <NavigationMenuLink
+                :class="[
+                  navigationMenuTriggerStyle(),
+                  'w-full gap-2',
+                  router.currentRoute.value.path == link.to
+                    ? 'text-primary'
+                    : '',
+                ]"
+              >
+                {{ link.label }}
+              </NavigationMenuLink>
+            </NuxtLink>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
