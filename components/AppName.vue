@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Rocket, Gamepad } from "lucide-vue-next";
+import { Gamepad } from "lucide-vue-next";
 </script>
 
 <template>
