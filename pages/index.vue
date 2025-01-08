@@ -47,11 +47,11 @@ const onSubmit = async () => {
     username.value = "";
 
     // navigate to the next page or dashboard
-    if (router.currentRoute.value.query.next) {
-      navigateTo({ path: router.currentRoute.value.query.next as string });
-    } else {
-      navigateTo({ path: "/dashboard" });
-    }
+    navigateTo({
+      path: router.currentRoute.value.query.next
+        ? (router.currentRoute.value.query.next as string)
+        : "/dashboard",
+    });
   } catch (error) {
     console.log(error);
     toast({

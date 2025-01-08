@@ -7,10 +7,18 @@ const logout = () => {
   storedUsername.value = null;
   user.value = null;
 
-  navigateTo({
-    path: "/",
-    replace: true,
-  });
+  const router = useRouter();
+
+  navigateTo(
+    {
+      path:
+        router.currentRoute.value.query.next &&
+        router.currentRoute.value.query.next !== "/dashboard"
+          ? (router.currentRoute.value.query.next as string)
+          : "/",
+    },
+    { replace: true },
+  );
 };
 
 onMounted(() => {
