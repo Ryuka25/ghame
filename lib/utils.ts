@@ -1,6 +1,6 @@
-import { graphql } from "@octokit/graphql";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { graphql } from "@octokit/graphql";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
