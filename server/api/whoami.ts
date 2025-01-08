@@ -1,6 +1,5 @@
 import type { graphql } from "@octokit/graphql";
 import { getGraphqlWithAuth } from "~/lib/utils";
-import { throwUnauthorized } from "~/server/utils/errors";
 import type { User } from "~/types";
 
 interface GithubUserResponse {
