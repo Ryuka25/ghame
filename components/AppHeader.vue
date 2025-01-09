@@ -100,9 +100,11 @@ const closeMenu = () => {
       <!-- /Mobile navigation -->
 
       <!--      App logo -->
-      <NuxtLink class="flex flex-1 justify-center" to="/">
-        <AppName />
-      </NuxtLink>
+      <div class="flex flex-1 justify-center gap-2 lg:justify-start">
+        <NuxtLink to="/">
+          <AppName />
+        </NuxtLink>
+      </div>
       <!--      /App logo -->
 
       <!-- Desktop Navigation -->
