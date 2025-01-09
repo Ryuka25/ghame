@@ -119,5 +119,8 @@ export function getExtraUsersFromTopUser(
 
   if (indexOfUser <= indexOfLastTop10User) return [];
 
-  return users.slice(indexOfUser - numberOfExtraUsers, indexOfUser + 1);
+  return users.slice(
+    indexOfUser - numberOfExtraUsers,
+    indexOfUser + numberOfExtraUsers,
+  );
 }
