@@ -1,10 +1,14 @@
 <script lang="ts" setup>
 import { LogOut } from "lucide-vue-next";
-import type { User } from "~/types";
 
-const { user } = defineProps<{
-  user: User;
-}>();
+const storedUsername = useCookie("username");
+const router = useRouter();
+const user = useUser();
+
+if (storedUsername.value && !user.value) {
+  const { data } = await useFetch("/api/whoami", { lazy: true });
+  user.value = data.value;
+}
 </script>
 
 <template>

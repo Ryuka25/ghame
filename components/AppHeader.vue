@@ -18,18 +18,7 @@ const navigation = [
     to: "/contact",
   },
 ];
-
-const storedUsername = useCookie("username");
-const user = useUser();
 const menuIsOpen = useState(() => false);
-
-onMounted(() => {
-  if (storedUsername.value && !user.value) {
-    $fetch("/api/whoami").then((userData) => {
-      user.value = userData;
-    });
-  }
-});
 
 const closeMenu = () => {
   menuIsOpen.value = false;
