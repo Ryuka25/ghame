@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { LogOut } from "lucide-vue-next";
+import { LayoutDashboard, LogOut } from "lucide-vue-next";
 
 const storedUsername = useCookie("username");
 const router = useRouter();
@@ -23,20 +23,44 @@ if (storedUsername.value && !user.value) {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" class="w-56">
-        <DropdownMenuLabel class="flex font-normal">
+        <DropdownMenuLabel class="flex gap-2 font-normal">
+          <Avatar class="h-8 w-8">
+            <AvatarImage :alt="user.login" :src="user.avatarUrl" />
+            <AvatarFallback>{{ user.initial }}</AvatarFallback>
+          </Avatar>
+
           <div class="flex flex-col space-y-1">
-            <p class="text-sm font-medium leading-none">{{ user.login }}</p>
+            <p class="line-clamp-1 text-sm font-medium leading-none">
+              {{ user.login }}
+            </p>
             <p
               v-if="user.name"
-              class="text-xs leading-none text-muted-foreground"
+              class="line-clamp-1 text-xs leading-none text-muted-foreground"
             >
               {{ user.name }}
             </p>
-            <p v-else class="text-xs leading-none text-muted-foreground">
+            <p
+              v-else
+              class="line-clamp-1 text-xs leading-none text-muted-foreground"
+            >
               {{ user.location }}
             </p>
           </div>
         </DropdownMenuLabel>
+        <DropdownMenuSeparator />
+
+        <DropdownMenuGroup>
+          <DropdownMenuItem as-child>
+            <NuxtLink
+              :to="{
+                path: '/dashboard',
+              }"
+            >
+              <LayoutDashboard class="mr-2 h-4 w-4" />
+              <span>Dashboard</span>
+            </NuxtLink>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem as-child>
           <NuxtLink
