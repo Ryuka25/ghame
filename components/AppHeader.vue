@@ -1,5 +1,11 @@
 <script lang="ts" setup>
-import { ContactRound, Menu } from "lucide-vue-next";
+import {
+  ContactRound,
+  Globe,
+  GlobeLock,
+  Menu,
+  UsersRound,
+} from "lucide-vue-next";
 import { APP_GITHUB_LINK } from "~/lib/app";
 import {
   NavigationMenu,
@@ -12,6 +18,21 @@ import {
 const router = useRouter();
 
 const navigation = [
+  {
+    label: "Followers",
+    icon: UsersRound,
+    to: "/followers",
+  },
+  {
+    label: "Public contributions",
+    icon: Globe,
+    to: "/public-contributions",
+  },
+  {
+    label: "Total contributions",
+    icon: GlobeLock,
+    to: "/total-contributions",
+  },
   {
     label: "Contact us",
     icon: ContactRound,
