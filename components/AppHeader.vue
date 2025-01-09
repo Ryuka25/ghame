@@ -84,7 +84,7 @@ const closeMenu = () => {
                 <li v-for="link in navigation" :key="link.to">
                   <NuxtLink
                     :to="link.to"
-                    active-class="!text-foreground"
+                    active-class="text-primary"
                     class="flex h-8 items-center gap-2 text-sm text-foreground/80 hover:text-foreground"
                     @click="closeMenu"
                   >
