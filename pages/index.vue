@@ -35,7 +35,7 @@ const onSubmit = async () => {
     }
 
     // send request to the server
-    const res = await $fetch("/api/login/", {
+    const res = await $fetch("/api/auth/login/", {
       method: "POST",
       body: {
         username: polishUsername(polishedUsername),

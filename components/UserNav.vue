@@ -6,7 +6,7 @@ const router = useRouter();
 const user = useUser();
 
 if (storedUsername.value && !user.value) {
-  const { data } = await useFetch("/api/whoami", { lazy: true });
+  const { data } = await useFetch("/api/auth/whoami", { lazy: true });
   user.value = data.value;
 }
 </script>
