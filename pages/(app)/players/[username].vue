@@ -33,17 +33,17 @@ const {
         </div>
         <div class="flex gap-4">
           <div class="flex flex-1 flex-col justify-between gap-1 text-center">
-            <div class="text-sm font-medium leading-none">108</div>
+            <div class="text-sm font-medium leading-none">404</div>
             <div class="text-[0.5rem]">Followers</div>
           </div>
           <Separator orientation="vertical" />
           <div class="flex flex-1 flex-col justify-between gap-1 text-center">
-            <div class="text-sm font-medium leading-none">108</div>
+            <div class="text-sm font-medium leading-none">404</div>
             <div class="text-[0.5rem]">Public contributions</div>
           </div>
           <Separator orientation="vertical" />
           <div class="flex flex-1 flex-col justify-between gap-1 text-center">
-            <div class="text-sm font-medium leading-none">108</div>
+            <div class="text-sm font-medium leading-none">404</div>
             <div class="text-[0.5rem]">Total contributions</div>
           </div>
         </div>
