@@ -3,13 +3,7 @@ import type { RankedUser, User } from "~/types";
 const TOP_MADAGASCAR_GITHUB_USERS =
   "https://raw.githubusercontent.com/tsirysndr/top-github-users/refs/heads/main/cache/madagascar.json";
 
-/**
- * Normalizes the user data by adding an initial field.
- *
- * @param {User} user - The user to normalize.
- * @returns {User} The normalized user.
- */
-export function normaliseUser<T extends User>(user: T): T {
+export function getInitialFromUser(user: { login: string; name: string }) {
   let initial = user.login.slice(0, 2);
 
   if (user.name) {
@@ -22,10 +16,13 @@ export function normaliseUser<T extends User>(user: T): T {
     }
     initial = user.name.slice(0, 2);
   }
+  return initial.toUpperCase();
+}
 
+export function normaliseUser<T extends User>(user: T): T {
   return {
     ...user,
-    initial: initial.toUpperCase(),
+    initial: getInitialFromUser(user),
   };
 }
 

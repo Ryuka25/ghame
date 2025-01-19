@@ -9,6 +9,9 @@ export interface User {
   avatarUrl: string;
   location: string;
   initial: string;
+  followers: number;
+  company: string;
+  twitterUsername: string;
 }
 
 /**
@@ -18,9 +21,6 @@ export interface User {
  */
 export interface RankedUser extends User {
   rank: number;
-  company: string;
-  twitterUsername: string;
-  followers: number;
   privateContributions: number;
   publicContributions: number;
   totalContributions: number;
