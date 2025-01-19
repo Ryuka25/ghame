@@ -1,5 +1,4 @@
 import type { graphql } from "@octokit/graphql";
-import { getGraphqlWithAuth } from "~/lib/utils";
 
 interface GithubUserResponse {
   user: {
@@ -36,10 +35,10 @@ export default defineEventHandler(async (event) => {
 
   const config = useRuntimeConfig();
   const githubToken = config.githubToken;
-  const graphlWithAuth = getGraphqlWithAuth(githubToken);
+  const graphqlWithAuth = getGraphqlWithAuth(githubToken);
 
   try {
-    const { user } = await getGithubUser(graphlWithAuth, username);
+    const { user } = await getGithubUser(graphqlWithAuth, username);
     return user;
   } catch (error) {
     console.error(error);

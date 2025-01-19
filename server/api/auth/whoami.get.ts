@@ -1,28 +1,7 @@
-import type { graphql } from "@octokit/graphql";
-import { getGraphqlWithAuth } from "~/lib/utils";
-import type { User } from "~/types";
-
-interface GithubUserResponse {
-  user: User;
-}
-
-function getGithubUser(
-  graphqlWithAuth: typeof graphql,
-  username: string,
-): Promise<GithubUserResponse> {
-  return graphqlWithAuth(
-    `
-    query {
-      user(login: "${username}") {
-        name,
-        login,
-        avatarUrl,
-        location,
-      }
-    }
-  `,
-  );
-}
+import {
+  getGithubUser,
+  getGraphqlWithAuth,
+} from "~/server/utils/github-services";
 
 export default defineEventHandler(async (event) => {
   const username = event.context.user?.username;
@@ -33,8 +12,7 @@ export default defineEventHandler(async (event) => {
   const graphlWithAuth = getGraphqlWithAuth(githubToken);
 
   try {
-    const { user } = await getGithubUser(graphlWithAuth, username);
-    return normaliseUser(user);
+    return await getGithubUser(graphlWithAuth, username);
   } catch (error) {
     console.error(error);
 
