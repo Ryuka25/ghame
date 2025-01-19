@@ -19,7 +19,7 @@ export function getInitialFromUser(user: { login: string; name: string }) {
   return initial.toUpperCase();
 }
 
-export function normaliseUser<T extends User>(user: T): T {
+export function normalizeUser<T extends User>(user: T): T {
   return {
     ...user,
     initial: getInitialFromUser(user),
@@ -32,9 +32,9 @@ export function normaliseUser<T extends User>(user: T): T {
  * @param {User} user - The user to normalize.
  * @returns {User} The normalized user.
  */
-export function normaliseRankedUser(user: RankedUser): RankedUser {
+export function normalizeRankedUser(user: RankedUser): RankedUser {
   return {
-    ...normaliseUser(user),
+    ...normalizeUser(user),
     totalContributions: user.publicContributions + user.privateContributions,
   };
 }
@@ -48,7 +48,7 @@ export async function fetchTopUsers(): Promise<RankedUser[]> {
   const usersJson = await $fetch<string>(TOP_MADAGASCAR_GITHUB_USERS);
   const users: RankedUser[] = JSON.parse(usersJson);
 
-  return users.map((user) => normaliseRankedUser(user));
+  return users.map((user) => normalizeRankedUser(user));
 }
 
 /**

@@ -1,7 +1,7 @@
 /**
  * Represents a user.
  *
- * @comment Normalize the user data by using the `normaliseUser` function.
+ * @comment Normalize the user data by using the `normalizeUser` function.
  */
 export interface User {
   name: string;
@@ -17,7 +17,7 @@ export interface User {
 /**
  * Represents a ranked user.
  *
- * @comment Normalizes the user data by using the `normaliseRankedUser` function.
+ * @comment Normalizes the user data by using the `normalizeRankedUser` function.
  */
 export interface RankedUser extends User {
   rank: number;
