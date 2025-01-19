@@ -34,9 +34,11 @@ onMounted(() => {
     <div class="flex flex-1 flex-col justify-center md:ml-4">
       <div
         v-if="userHasName(user)"
-        class="line-clamp-1 break-all font-semibold"
+        class="line-clamp-1 break-all font-semibold hover:underline"
       >
-        {{ user.name }}
+        <NuxtLink :to="`/players/${user.login}`">
+          {{ user.name }}
+        </NuxtLink>
       </div>
       <div class="line-clamp-1 break-all font-light">
         {{ user.login }}
