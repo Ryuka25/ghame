@@ -52,7 +52,7 @@ export default defineNuxtConfig({
           // TODO: Change this to your cloudflare site key
           defer: true,
           src: "https://static.cloudflareinsights.com/beacon.min.js",
-          "data-cf-beacon": '{"token": "f5f4d13235bf4d7ebd973c6a4f58aa0a"}',
+          "data-cf-beacon": '{"token": "a3532d4d9da844c4a7e013e4984d1908"}',
         },
       ],
       meta: [
