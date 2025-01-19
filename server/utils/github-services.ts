@@ -55,7 +55,8 @@ export async function getGithubUser(
         twitterUsername,
         followers {
           totalCount
-        }
+        },
+        url
       }
     }
   `,

@@ -12,6 +12,7 @@ export interface User {
   followers: number;
   company: string;
   twitterUsername: string;
+  url: string;
 }
 
 /**

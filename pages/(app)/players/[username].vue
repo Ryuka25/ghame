@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Building2, Ellipsis, MapPin } from "lucide-vue-next";
+import { Building2, MapPin } from "lucide-vue-next";
 
 const route = useRoute();
 
@@ -47,10 +47,13 @@ const {
             <div class="text-[0.5rem]">Total contributions</div>
           </div>
         </div>
-        <div class="flex w-full gap-2">
+        <div class="flex w-full flex-col gap-2 md:flex-row">
           <Button class="flex-1">Challenge</Button>
-          <Button size="icon" variant="secondary">
-            <Ellipsis class="size-4" />
+          <Button as-child variant="secondary">
+            <a :href="(user.url as string) ?? '#'" target="_blank">
+              <Icon class="mr-2 h-4 w-4" name="simple-icons:github" />
+              <span>Show profile on Github</span>
+            </a>
           </Button>
         </div>
         <Card class="w-full">
