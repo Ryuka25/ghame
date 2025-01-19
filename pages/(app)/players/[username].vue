@@ -21,10 +21,12 @@ const {
         v-if="status === 'success' && user"
         class="flex w-full flex-col items-center gap-4"
       >
-        <Avatar class="size-32">
-          <AvatarImage :alt="user.login" :src="user.avatarUrl" />
-          <AvatarFallback>{{ user.initial }}</AvatarFallback>
-        </Avatar>
+        <a :href="user.avatarUrl ?? '#'" target="_blank">
+          <Avatar class="size-32">
+            <AvatarImage :alt="user.login" :src="user.avatarUrl" />
+            <AvatarFallback>{{ user.initial }}</AvatarFallback>
+          </Avatar>
+        </a>
         <div class="grid gap-1 text-center">
           <p v-if="user.name" class="text-md font-medium leading-none">
             {{ user.name }}
