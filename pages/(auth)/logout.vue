@@ -9,13 +9,19 @@ const logout = () => {
 
   const router = useRouter();
 
+  const authenticatedRoutes = ["/dashboard"];
+
+  function isAuthenticatedRoute(route: string) {
+    return authenticatedRoutes.indexOf(route) !== -1;
+  }
+
   navigateTo(
     {
       path:
         router.currentRoute.value.query.next &&
-        router.currentRoute.value.query.next !== "/dashboard"
-          ? (router.currentRoute.value.query.next as string)
-          : "/",
+        isAuthenticatedRoute(router.currentRoute.value.query.next as string)
+          ? "/"
+          : (router.currentRoute.value.query.next as string),
     },
     { replace: true },
   );
