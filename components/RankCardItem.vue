@@ -23,11 +23,17 @@ onMounted(() => {
 
 <template>
   <div
-    :class="[isActive ? 'text-primary' : '']"
-    class="flex items-center gap-2 py-1"
+    :class="[isActive ? 'bg-primary text-primary-foreground' : '']"
+    class="flex items-center gap-2 py-2"
   >
-    <RankNumber :number="user.rank" />
-    <Avatar :class="[isActive ? 'border-2 border-primary' : '']" class="size-8">
+    <RankNumber
+      :class="[isActive ? 'bg-primary text-primary-foreground' : '']"
+      :number="user.rank"
+    />
+    <Avatar
+      :class="[isActive ? 'border-2 border-primary-foreground' : '']"
+      class="size-8"
+    >
       <AvatarImage :src="user.avatarUrl" />
       <AvatarFallback>{{ user.initial }}</AvatarFallback>
     </Avatar>
@@ -51,7 +57,10 @@ onMounted(() => {
         <span v-else> {{ user.login }}</span>
       </div>
     </div>
-    <div class="flex items-center gap-1">
+    <div
+      :class="[isActive ? 'font-semibold' : '']"
+      class="flex items-center gap-1"
+    >
       {{ user[rankKey] }}
       <UsersRound v-if="rankKey == 'followers'" class="size-4 font-light" />
       <Globe

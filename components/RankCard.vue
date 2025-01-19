@@ -31,20 +31,24 @@ const router = useRouter();
         </NuxtLink>
       </CardTitle>
     </CardHeader>
-    <CardContent class="grid gap-2 text-xs">
+    <CardContent class="grid gap-1 p-0 text-xs">
       <RankCardItem
         v-for="user in users"
         :key="user.login"
         :rank-key="rankKey"
         :user="user"
+        class="p-6"
       />
       <template v-if="extraUsers.length">
-        <Separator />
+        <div class="px-6">
+          <Separator />
+        </div>
         <RankCardItem
           v-for="user in extraUsers"
           :key="user.login"
           :rank-key="rankKey"
           :user="user"
+          class="p-6"
         />
       </template>
     </CardContent>
