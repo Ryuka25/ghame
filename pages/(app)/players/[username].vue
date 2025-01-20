@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Building2, MapPin } from "lucide-vue-next";
+import { Building2, MapPin, Swords } from "lucide-vue-next";
 
 const route = useRoute();
 
@@ -12,6 +12,24 @@ const {
 } = await useFetch(`/api/players/${username}`, {
   lazy: true,
 });
+
+const colorMode = useColorMode();
+
+function buildActivityGraphLink(username: string) {
+  const bgColor = "transparent";
+  const color = "e11d48";
+  const lineColor = "e11d48";
+  const pointColor = colorMode.value == "dark" ? "fff" : "000";
+  return `https://github-readme-activity-graph.vercel.app/graph?username=${username}&bg_color=${bgColor}&color=${color}&line=${lineColor}&point=${pointColor}&area=true&hide_border=true`;
+}
+
+function buildCurrentlyWorkingOnGraphLink(userId: number) {
+  return `https://next.ossinsight.io/widgets/official/compose-currently-working-on/thumbnail.png?user_id=${userId}&activity_type=all&image_size=auto&color_scheme=${colorMode.value}`;
+}
+
+function buildUserDashboardStatsGraphLink(userId: number) {
+  return `https://next.ossinsight.io/widgets/official/compose-user-dashboard-stats/thumbnail.png?user_id=${userId}&activity_type=all&image_size=auto&color_scheme=${colorMode.value}`;
+}
 </script>
 
 <template>
@@ -87,6 +105,23 @@ const {
             </div>
           </CardContent>
         </Card>
+        <img
+          :alt="`${user.login}'s activity graph`"
+          :src="buildActivityGraphLink(user.login)"
+          class="rounded-lg"
+        />
+        <div class="flex flex-col gap-2 md:flex-row">
+          <img
+            :alt="`${user.login}'s Github Dashboard`"
+            :src="buildUserDashboardStatsGraphLink(user.databaseId)"
+            class="h-auto w-full rounded-lg border border-primary"
+          />
+          <img
+            :alt="`${user.login}'s Recent Work - Last 28 days`"
+            :src="buildCurrentlyWorkingOnGraphLink(user.databaseId)"
+            class="h-auto w-full rounded-lg border border-primary"
+          />
+        </div>
       </div>
     </div>
   </section>
