@@ -139,7 +139,7 @@ const closeMenu = () => {
           :link="APP_GITHUB_LINK"
           class="hidden lg:inline-flex"
         />
-        <UserNav :user />
+        <UserNav />
       </div>
     </div>
   </header>
