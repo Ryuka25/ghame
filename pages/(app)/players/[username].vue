@@ -50,7 +50,10 @@ const {
           </div>
         </div>
         <div class="flex w-full flex-col gap-2 md:flex-row">
-          <Button class="flex-1">Challenge</Button>
+          <Button class="flex-1">
+            <Swords class="mr-2 h-4 w-4" />
+            Challenge
+          </Button>
           <Button as-child variant="secondary">
             <a :href="(user.url as string) ?? '#'" target="_blank">
               <Icon class="mr-2 h-4 w-4" name="simple-icons:github" />
