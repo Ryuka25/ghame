@@ -46,7 +46,10 @@ onMounted(() => {
           {{ user.name }}
         </NuxtLink>
       </div>
-      <div class="line-clamp-1 break-all font-light">
+      <div
+        :class="[isActive ? '' : 'font-light']"
+        class="line-clamp-1 break-all"
+      >
         <NuxtLink
           v-if="!userHasName(user)"
           :to="`/players/${user.login}`"
