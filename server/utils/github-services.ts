@@ -27,6 +27,28 @@ interface GithubUserResponse {
   followers: {
     totalCount: number;
   };
+  contributionsCollection: {
+    contributionCalendar: {
+      totalContributions: number;
+    };
+    restrictedContributionsCount: number;
+  };
+}
+
+function getTotalContributions(githubUser: GithubUserResponse) {
+  return githubUser.contributionsCollection.contributionCalendar
+    .totalContributions;
+}
+
+function getPrivateContributions(githubUser: GithubUserResponse) {
+  return githubUser.contributionsCollection.restrictedContributionsCount;
+}
+
+function getPublicContributions(githubUser: GithubUserResponse) {
+  return (
+    githubUser.contributionsCollection.contributionCalendar.totalContributions -
+    githubUser.contributionsCollection.restrictedContributionsCount
+  );
 }
 
 function normalizeGithubUserResponse(
@@ -36,6 +58,9 @@ function normalizeGithubUserResponse(
     ...githubUserResponse,
     initial: getInitialFromUser(githubUserResponse),
     followers: githubUserResponse.followers.totalCount,
+    totalContributions: getTotalContributions(githubUserResponse),
+    privateContributions: getPrivateContributions(githubUserResponse),
+    publicContributions: getPublicContributions(githubUserResponse),
   };
 }
 
@@ -47,16 +72,23 @@ export async function getGithubUser(
     `
     query {
       user(login: "${username}") {
-        name,
-        login,
-        avatarUrl,
-        location,
-        company,
-        twitterUsername,
+        name
+        login
+        avatarUrl
+        location
+        company
+        twitterUsername
         followers {
           totalCount
-        },
+        }
         url
+        databaseId
+        contributionsCollection {
+          contributionCalendar {
+            totalContributions
+          }
+          restrictedContributionsCount
+        }
       }
     }
   `,

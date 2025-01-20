@@ -13,6 +13,10 @@ export interface User {
   company: string;
   twitterUsername: string;
   url: string;
+  databaseId: number;
+  privateContributions: number;
+  publicContributions: number;
+  totalContributions: number;
 }
 
 /**
@@ -22,7 +26,4 @@ export interface User {
  */
 export interface RankedUser extends User {
   rank: number;
-  privateContributions: number;
-  publicContributions: number;
-  totalContributions: number;
 }
