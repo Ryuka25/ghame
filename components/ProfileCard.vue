@@ -23,6 +23,28 @@ const { user } = defineProps<{
             {{ user.location }}
           </p>
         </div>
+        <div class="flex h-10 gap-4">
+          <div class="flex flex-1 flex-col justify-between gap-1 text-center">
+            <div class="text-sm font-medium leading-none">
+              {{ user.followers }}
+            </div>
+            <div class="text-[0.5rem]">Followers</div>
+          </div>
+          <Separator orientation="vertical" />
+          <div class="flex flex-1 flex-col justify-between gap-1 text-center">
+            <div class="text-sm font-medium leading-none">
+              {{ user.publicContributions }}
+            </div>
+            <div class="text-[0.5rem]">Public contributions</div>
+          </div>
+          <Separator orientation="vertical" />
+          <div class="flex flex-1 flex-col justify-between gap-1 text-center">
+            <div class="text-sm font-medium leading-none">
+              {{ user.totalContributions }}
+            </div>
+            <div class="text-[0.5rem]">Total contributions</div>
+          </div>
+        </div>
       </div>
     </CardContent>
   </Card>
