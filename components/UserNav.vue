@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { LayoutDashboard, LogOut } from "lucide-vue-next";
+import { LayoutDashboard, LogOut, UserRound } from "lucide-vue-next";
 
 const storedUsername = useCookie("username");
 const router = useRouter();
@@ -48,7 +48,6 @@ if (storedUsername.value && !user.value) {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-
         <DropdownMenuGroup>
           <DropdownMenuItem as-child>
             <NuxtLink
@@ -58,6 +57,16 @@ if (storedUsername.value && !user.value) {
             >
               <LayoutDashboard class="mr-2 h-4 w-4" />
               <span>Dashboard</span>
+            </NuxtLink>
+          </DropdownMenuItem>
+          <DropdownMenuItem as-child>
+            <NuxtLink
+              :to="{
+                path: `/players/${user.login}`,
+              }"
+            >
+              <UserRound class="mr-2 h-4 w-4" />
+              <span>My Profile</span>
             </NuxtLink>
           </DropdownMenuItem>
         </DropdownMenuGroup>

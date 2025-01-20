@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { User } from "~/types";
+import { UserRound } from "lucide-vue-next";
 
 const { user } = defineProps<{
   user: User;
@@ -45,6 +46,12 @@ const { user } = defineProps<{
             <div class="text-[0.5rem]">Total contributions</div>
           </div>
         </div>
+        <Button as-child class="w-full">
+          <NuxtLink :to="`/players/${user.login}`">
+            <UserRound class="mr-2 h-4 w-4" />
+            <span>Show my profile</span>
+          </NuxtLink>
+        </Button>
       </div>
     </CardContent>
   </Card>
