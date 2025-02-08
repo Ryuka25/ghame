@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import {
-  APP_TITLE,
   APP_DESCRIPTION,
-  APP_PREVIEW_IMAGE,
   APP_NAME,
+  APP_PREVIEW_IMAGE,
+  APP_TITLE,
 } from "./lib/app";
 
 useSeoMeta({
@@ -16,6 +16,12 @@ useSeoMeta({
   ogImage: APP_PREVIEW_IMAGE,
   twitterImage: APP_PREVIEW_IMAGE,
   twitterCard: "summary_large_image",
+});
+
+useHead({
+  bodyAttrs: {
+    class: "cursor-[url(/misc/cursor.png),auto]",
+  },
 });
 </script>
 
